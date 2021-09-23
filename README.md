@@ -1,7 +1,7 @@
 <div align="center">
   <h1 align="center">Projeto Solomon</h1>
   <p align="justify">Este projeto tem por finalidade traduzir a Bíblia Sagrada. Baseado na <a href="https://bereanbibles.com/about-berean-study-bible/">Berean Bible</a>, mantendo a idea de tradução literal, ou mesmo mais perto do original possível.</p>
-  <p align="justify">O Projeto não tem fins lucrativos, portanto pode ser usado por terceiros. Com as condições devidas, que podem ser analisadas <a href="">aqui</a>.</p>
+  <p align="justify">O Projeto não tem fins lucrativos, portanto pode ser usado por terceiros. Com as condições devidas, que podem ser analisadas <a href="https://github.com/gabeleonn/solomon/blob/main/LICENSE">aqui</a>.</p>
   <font align="center" size="2" color="#999">Tanto o Web App que será criado, quanto a API (ou APIs) serão de uso gratuito. <b>Mateus 10:8</b></font>
 </div>
 
@@ -17,12 +17,12 @@
 
 <div>
      <h2>Projetos</h2>
-    <h3>Solomon</h3>
+    <h3><a href="https://github.com/gabeleonn/solomon">Solomon</a></h3>
     ➥ API Bíblia + Strongs + Referências Cruzadas + Cabeçalho<br/>
     ➥ API Tradução
-    <h3>Babel</h3>
+    <h3><a href="https://github.com/gabeleonn/babel">Babel</a></h3>
     ➥ Tradução da Bíblia Sagrada em português (literal) usando uma interface limpa e amigável.
-    <h3>Charis</h3>
+    <h3><a href="https://github.com/gabeleonn/charis">Charis</a></h3>
     ➥ Interface bíblia online interlinear português/inglês com original, strongs, referências cruzadas e cabeçalho.
 </div>
 
@@ -147,7 +147,7 @@
 
 <div justify="center">
     <p align="center">
-        The Holy Bible, Berean Study Bible, BSB<br/>
+        The Holy Bible, Berean Interlinear Bible, BSB<br/>
         Copyright ©2016, 2020 by Bible Hub<br/>
         Used by Permission. All Rights Reserved Worldwide.<br/>
     </p>
