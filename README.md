@@ -20,10 +20,9 @@
     <h3><a href="https://github.com/gabeleonn/solomon">Solomon</a></h3>
     ➥ API Bíblia + Strongs + Referências Cruzadas + Cabeçalho<br/>
     ➥ API Tradução
-    <h3><a href="https://github.com/gabeleonn/babel">Babel</a></h3>
-    ➥ Tradução da Bíblia Sagrada em português (literal) usando uma interface limpa e amigável.
     <h3><a href="https://github.com/gabeleonn/charis">Charis</a></h3>
     ➥ Interface bíblia online interlinear português/inglês com original, strongs, referências cruzadas e cabeçalho.
+    ➥ Interface para tradução da Bíblia Sagrada.
 </div>
 
 <div>
