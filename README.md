@@ -138,6 +138,84 @@
     </div>
 </div>
 
+<div>
+    <h2>Entidades</h2>
+    <pre>
+        [
+            {
+                "entity": "word",
+                "reference": {
+                    "book": "1jo",
+                    "chapter": 1,
+                    "verse": 1,
+                    "heading": "The Word of Life",
+                    "cross_references": [ "Luke 24:36–49", "John 20:19–23" ]
+                },
+                "hebrew_sort": 999999,
+                "greek_sort": 125211,
+                "bsb_sort": 430707,
+                "translation": "Who",
+                "strong": 3739,
+                "created_at": "",
+                "updated_at": "",
+                "updated_by": ""
+            },
+            {
+                "entity": "book",
+                "id": "1jo",
+                "name": "1 John",
+                "description": "a description",
+                "categories": [ "love", "new life", "care", "etc" ],
+                "chapter_count": 55,
+                "verse_count": 1555,
+                "created_at": "",
+                "updated_at": "",
+                "updated_by": ""
+            },
+            {
+                "entity": "definition",
+                "strong": 3739,
+                "original": "Ὃ",
+                "translit": "Ho",
+                "parsing_short": "RelPro-NNS",
+                "parsing_long": "Personal / Relative Pronoun - Nominative Neuter Singular",
+                "definition": "Who, which, what, that. ",
+                "created_at": "",
+                "updated_at": "",
+                "updated_by": ""
+            },
+            {
+                "entity": "user",
+                "name": "John Doe",
+                "email": "john@doe.com",
+                "password": "mypass",
+                "anonymize": false,
+                "token": "last_valid_token"
+            },
+            {
+                "entity": "sugestion",
+                "user": "john@doe.com",
+                "entity_to_update": "what_entity",
+                "payload": {
+                    "word": "translated",
+                    "word_reference": {
+                        "book": "1jo",
+                        "chapter": 1,
+                        "verse": 1
+                    }, // ends word payload
+                    "definition": "definition translated",
+                    "strong": 3739, // ends definition payload
+                    "heading": "heading translated",
+                    "heading_reference": {
+                        "book": "1jo",
+                        "chapter": 1
+                    } // ends heading payload
+                }
+            }
+        ]
+      </pre>
+</div>
+
 <div justify="center">
     <h2>Contato</h2>
     <p>Entre em contato via <a href="mailto:gableonn@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
