@@ -21,7 +21,7 @@
     ➥ API Bíblia + Strongs + Referências Cruzadas + Cabeçalho<br/>
     ➥ API Tradução
     <h3><a href="https://github.com/gabeleonn/charis">Charis</a></h3>
-    ➥ Interface bíblia online interlinear português/inglês com original, strongs, referências cruzadas e cabeçalho.
+    ➥ Interface bíblia online interlinear português/inglês com original, strongs, referências cruzadas e cabeçalho.<br/>
     ➥ Interface para tradução da Bíblia Sagrada.
 </div>
 
