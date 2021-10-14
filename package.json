@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "generate:json": "node data/script.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.3.0"
+  }
+}
