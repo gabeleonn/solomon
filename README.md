@@ -43,10 +43,9 @@
 
 <div>
     <h2>Scripts</h2>
-    <h3>Generate JSON files from the xlsx data</h3>
-    ```bash
-        yarn generate:json
-    ```
+    <h6>Generate JSON files from the xlsx data</h6>
+    <pre>yarn generate:json</pre>
+
 </div>
 
 <div>
