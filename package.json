@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "generate:json": "ts-node data/generate-json.ts"
+    "generate:json": "ts-node data/generate-json.ts",
+    "dev": "nodemon index.ts",
+    "build": "tsc",
+    "start": "node ./dist/index.js"
   },
   "dependencies": {},
   "devDependencies": {
