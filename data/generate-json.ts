@@ -135,7 +135,7 @@ async function readFile() {
             Objeto[book].push(toObject(header, row))
             
         }
-        writeFiles(Objeto);
+        writeFile(Objeto);
     } catch(e) {
         console.log(e)
         console.log(sheet.getRow(debug).values)
@@ -152,8 +152,8 @@ function writeFiles(output: IObject) {
     
 }
 
-// function writeFile(output: typeof Objeto) {
-//     fs.writeFileSync(`data/books/bible.json`, JSON.stringify(output))
-// }
+function writeFile(output: IObject) {
+    fs.writeFileSync(`data/books/bible.json`, JSON.stringify(output))
+}
 
 readFile();
