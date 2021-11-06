@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "generate:json": "ts-node data/generate-json.ts",
     "dev": "nodemon index.ts",
     "build": "tsc",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "generate:json": "ts-node data/generate-json.ts",
+    "lint:staged": "eslint --fix"
   },
   "dependencies": {},
   "devDependencies": {
@@ -12,8 +13,12 @@
     "@types/node": "^16.11.6",
     "exceljs": "^4.3.0",
     "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
     "nodemon": "^2.0.14",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
+  },
+  "lint-staged": {
+    "./src/**/*.ts": ["yarn lint:staged"]
   }
 }
