@@ -1,5 +1,9 @@
 /node_modules
+/dist
+/coverage
+
 /data/books/*
 !/data/books/.gitkeep
-/dist
+
+# LOGS
 *.log
