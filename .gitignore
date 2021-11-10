@@ -2,3 +2,4 @@
 /data/books/*
 !/data/books/.gitkeep
 /dist
+*.log

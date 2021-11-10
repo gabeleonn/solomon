@@ -3,6 +3,11 @@
     "dev": "nodemon index.ts",
     "build": "tsc",
     "start": "node -v",
+    "test": "jest --passWithNoTests --runInBand --silent --noStackTrace",
+    "test:unit": "yarn test --watch -c jest-unit.config.js",
+    "test:integration": "yarn test --watch -c jest-integration.config.js",
+    "test:staged": "yarn test --findRelatedTests",
+    "test:ci": "yarn test --coverage",
     "generate:json": "ts-node data/generate-json.ts",
     "generate:db": "ts-node data/generate-db.ts",
     "lint:staged": "eslint --fix"
@@ -11,18 +16,33 @@
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
+    "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.1",
     "exceljs": "^4.3.0",
     "husky": "^7.0.4",
+    "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "mongodb": "^4.1.4",
     "nodemon": "^2.0.14",
+    "prettier": "^2.4.1",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   },
   "lint-staged": {
     "./src/**/*.ts": [
-      "yarn lint:staged"
+      "yarn lint:staged",
+      "yarn test:staged"
     ]
   }
 }
