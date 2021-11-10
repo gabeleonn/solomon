@@ -33,11 +33,13 @@
         <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="Javascript" />
         <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
         <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="Express" />
+        <img src="https://img.shields.io/badge/GraphQl-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL" />
+        <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white" alt="Redis" />
+        <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" alt="Swagger" />
+        <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="JWT" />
         <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" alt="Jest" />
         <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
         <!-- <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white" alt="Mysql" /> -->
-        <img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D" alt="VueJS" />
-        <img src="https://img.shields.io/badge/nuxt.js-00C58E?style=for-the-badge&logo=nuxtdotjs&logoColor=white" alt="NuxtJS" />
     </div>
 </div>
 
@@ -77,7 +79,7 @@
             <li>
                 Ler estatística de palavras<br />
                 <font size="2" color="#999">➥ Trazer quantidade total de palavras, palavras traduzidas, palavras não traduzidas, quantas vezes uma mesma tradução se repete baseado no strong number, usuários e quantas traduções tiveram, porcentagem já traduzida.</font>
-            </li>     
+            </li>
         </ul>
         <ul>
             <h4>Tradução</h4>
@@ -140,7 +142,7 @@
             <li>
                 SignOut<br />
                 <font size="2" color="#999">➥ Inválidar token de sign in.</font>
-            </li>         
+            </li>
         </ul>
     </div>
 </div>
