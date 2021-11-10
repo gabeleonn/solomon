@@ -91,8 +91,8 @@ function spreadReference(sheet: Worksheet) {
     }
 }
 
-function toObject(header: CellValue[] | { [key: string]: CellValue; }, row: Row) {
-    const object: { [key: string]: CellValue } = {}
+function toObject(header: CellValue[] | { [key: string]: CellValue; }, row: Row, reference: string[]) {
+    const object: { [key: string]: CellValue | string[] | Object } = {}
     if(Array.isArray(row.values)) {
         row.values.map((value, index) => {
             if(index > 0) {
@@ -100,7 +100,17 @@ function toObject(header: CellValue[] | { [key: string]: CellValue; }, row: Row)
                     const identifier = header[index]?.toString()
 
                     if(identifier) {
-                        object[identifier] = value
+                        if(identifier === 'cross_reference') {
+                            object[identifier] = value.toString().replace('(', '').replace(')', '').split(';').map(each => each.trim())
+                        }  else if(identifier === 'reference') {
+                            object['book'] = reference[2]
+                            object['chapter'] = reference[3]
+                            object['verse'] = reference[4]
+                        } else if(identifier === 'language') {
+                            object[identifier] = value.toString().toLowerCase()
+                        } else {
+                            object[identifier] = typeof value === 'string' ? value.toString().trim() : value
+                        }
                     }
 
                 }
@@ -116,7 +126,7 @@ async function readFile() {
 
     const file = await wb.xlsx.readFile('data/original.xlsx')
     const sheet = file.getWorksheet('data')
-    const regex = /^(\d?\s?([a-z]+\s?)+)\s\d{1,3}:\d{1,3}$/gi
+    const regex = /^(\d?\s?([a-z]+\s?)+)\s(\d{1,3}):(\d{1,3})$/gi
 
     const header = sheet.getRow(1).values;
 
@@ -132,10 +142,9 @@ async function readFile() {
             
             const matches = [...row.getCell(11).text.matchAll(regex)][0];
             const book = matches[1].toLowerCase().trim().replace(/\s/gi, '_')
-            Objeto[book].push(toObject(header, row))
-            
+            Objeto[book].push(toObject(header, row, matches))
         }
-        writeFile(Objeto);
+        writeFiles(Objeto);
     } catch(e) {
         console.log(e)
         console.log(sheet.getRow(debug).values)
@@ -146,14 +155,13 @@ function writeFiles(output: IObject) {
     // console.log(Object.keys(output))
 
     for (let key of Object.keys(output)) {
-        console.log(key)
         fs.writeFileSync(`data/books/${key}.json`, JSON.stringify(output[key]))
     }
     
 }
 
-function writeFile(output: IObject) {
-    fs.writeFileSync(`data/books/bible.json`, JSON.stringify(output))
-}
+// function writeFile(output: IObject) {
+//     fs.writeFileSync(`data/books/bible.json`, JSON.stringify(output))
+// }
 
 readFile();
