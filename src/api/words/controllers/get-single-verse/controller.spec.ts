@@ -34,4 +34,21 @@ describe(`Get single verse controller`, () => {
       message: 'O parametro "chapter" é necessário.',
     });
   });
+
+  it(`should return 400 if verse field is not present`, async () => {
+    const sut = new GetSingleVerseController();
+
+    const response = await sut.handle({
+      data: {
+        book: 'genesis',
+        chapter: 1,
+        verse: undefined,
+      },
+    });
+
+    expect(response).toEqual({
+      status: 400,
+      message: 'O parametro "verse" é necessário.',
+    });
+  });
 });
