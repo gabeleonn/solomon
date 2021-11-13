@@ -3,8 +3,8 @@ import { IGetSingleVerse } from '@/api/words/usecases/get-single-verse/interface
 import { Reference } from '@/api/words/models/reference';
 import { Word } from '@/api/words/models/word';
 import { IController } from '@/common/protocols/controller';
-import { MissingParamError } from '@/common/errors';
-import { badRequest, ok } from '@/common/helpers/http';
+import { MissingParamError, ServerError } from '@/common/errors';
+import { badRequest, ok, serverError } from '@/common/helpers/http';
 
 const word: Word = {
   definition: 'definition',
@@ -121,5 +121,20 @@ describe(`Get single verse controller`, () => {
     });
 
     expect(response).toEqual(ok(word));
+  });
+
+  it(`should return server error if usecase throws`, async () => {
+    const { sut, getSingleVerseStub } = makeSut();
+    jest.spyOn(getSingleVerseStub, 'get').mockRejectedValueOnce(new Error());
+
+    const response = await sut.handle({
+      data: {
+        book: 'genesis',
+        chapter: 1,
+        verse: 1,
+      },
+    });
+
+    expect(response).toEqual(serverError(new ServerError('any')));
   });
 });
