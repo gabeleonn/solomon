@@ -1,9 +1,12 @@
+import { IGetSingleVerse } from '@/api/words/usecases/get-single-verse/interface';
+
 import {
   IController,
   IRequest,
   IResponse,
 } from '@/common/protocols/controller';
-import { IGetSingleVerse } from '@/api/words/usecases/get-single-verse/interface';
+import { MissingParamError } from '@/common/errors';
+import { badRequest, ok } from '@/common/helpers/http';
 
 export class GetSingleVerseController implements IController {
   private readonly getSingleVerse: IGetSingleVerse;
@@ -15,10 +18,7 @@ export class GetSingleVerseController implements IController {
   async handle({ data }: IRequest): Promise<IResponse> {
     for (const field of ['book', 'chapter', 'verse']) {
       if (!data[field]) {
-        return {
-          status: 400,
-          message: `O parametro "${field}" é necessário.`,
-        };
+        return badRequest(new MissingParamError(field));
       }
     }
 
@@ -26,6 +26,6 @@ export class GetSingleVerseController implements IController {
 
     const singleVerse = await this.getSingleVerse.get({ book, chapter, verse });
 
-    return { status: 200, data: { ...singleVerse } };
+    return ok(singleVerse);
   }
 }
