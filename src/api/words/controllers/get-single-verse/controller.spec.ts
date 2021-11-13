@@ -3,6 +3,8 @@ import { IGetSingleVerse } from '@/api/words/usecases/get-single-verse/interface
 import { Reference } from '@/api/words/models/reference';
 import { Word } from '@/api/words/models/word';
 import { IController } from '@/common/protocols/controller';
+import { MissingParamError } from '@/common/errors';
+import { badRequest, ok } from '@/common/helpers/http';
 
 const word: Word = {
   definition: 'definition',
@@ -57,10 +59,7 @@ describe(`Get single verse controller`, () => {
       },
     });
 
-    expect(response).toEqual({
-      status: 400,
-      message: 'O parametro "book" é necessário.',
-    });
+    expect(response).toEqual(badRequest(new MissingParamError('book')));
   });
 
   it(`should return 400 if chapter field is not present`, async () => {
@@ -74,10 +73,7 @@ describe(`Get single verse controller`, () => {
       },
     });
 
-    expect(response).toEqual({
-      status: 400,
-      message: 'O parametro "chapter" é necessário.',
-    });
+    expect(response).toEqual(badRequest(new MissingParamError('chapter')));
   });
 
   it(`should return 400 if verse field is not present`, async () => {
@@ -91,10 +87,7 @@ describe(`Get single verse controller`, () => {
       },
     });
 
-    expect(response).toEqual({
-      status: 400,
-      message: 'O parametro "verse" é necessário.',
-    });
+    expect(response).toEqual(badRequest(new MissingParamError('verse')));
   });
 
   it(`should call usecase with proper data`, async () => {
@@ -114,5 +107,19 @@ describe(`Get single verse controller`, () => {
       chapter: 1,
       verse: 1,
     });
+  });
+
+  it(`should return right response`, async () => {
+    const { sut } = makeSut();
+
+    const response = await sut.handle({
+      data: {
+        book: 'genesis',
+        chapter: 1,
+        verse: 1,
+      },
+    });
+
+    expect(response).toEqual(ok(word));
   });
 });
