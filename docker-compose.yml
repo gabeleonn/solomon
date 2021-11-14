@@ -25,10 +25,10 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - /home/renatogroffe/Desenvolvimento/Docker/Volumes/MongoDB:/data/db
+      - c:/Users/gpetz/Documents/Volumes/Mongo:/data/db
     networks:
       - mongo-compose-network
 
-networks: 
+networks:
     mongo-compose-network:
       driver: bridge

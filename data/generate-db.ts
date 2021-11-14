@@ -1,13 +1,10 @@
 import fs from 'fs';
-import { MongoClient } from 'mongodb';
-import env from '../src/config/env';
-
-const client = new MongoClient(env.mongoUrl);
+import config from '../src/config/database';
+import { MongoHelper } from '../src/common/helpers/mongo-helper';
 
 async function generate(): Promise<void> {
-  await client.connect();
-  const db = client.db('words-api');
-  const collection = db.collection('words');
+  await MongoHelper.connect(config.mongoUrl);
+  const collection = MongoHelper.getCollection('words');
   const files = fs
     .readdirSync('./data/books', { encoding: 'utf8', withFileTypes: true })
     .filter(dir => /.json$/gi.test(dir.name));
@@ -31,4 +28,4 @@ async function generate(): Promise<void> {
 generate()
   .then()
   .catch(e => console.log(e.message))
-  .finally(async () => await client.close());
+  .finally(async () => await MongoHelper.disconnect());
