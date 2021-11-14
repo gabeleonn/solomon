@@ -1,5 +1,7 @@
 export interface IRequest {
-  data: any;
+  data?: any;
+  params: any;
+  query?: any;
 }
 export interface IResponse {
   status: number;

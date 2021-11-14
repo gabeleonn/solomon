@@ -7,6 +7,7 @@ import {
 } from '@/common/protocols/controller';
 import { MissingParamError, ServerError } from '@/common/errors';
 import { badRequest, ok, serverError } from '@/common/helpers/http';
+import { Word } from '@/api/words/models/word';
 
 export class GetSingleVerseController implements IController {
   private readonly getSingleVerse: IGetSingleVerse;
@@ -15,21 +16,33 @@ export class GetSingleVerseController implements IController {
     this.getSingleVerse = getSingleVerse;
   }
 
-  async handle({ data }: IRequest): Promise<IResponse> {
+  async handle({ params, query }: IRequest): Promise<IResponse> {
     try {
       for (const field of ['book', 'chapter', 'verse']) {
-        if (!data[field]) {
+        if (!params[field]) {
           return badRequest(new MissingParamError(field));
         }
       }
 
-      const { book, chapter, verse } = data;
+      const { book, chapter, verse } = params;
+      let singleVerse: Word;
 
-      const singleVerse = await this.getSingleVerse.get({
-        book,
-        chapter,
-        verse,
-      });
+      if (query?.sorting) {
+        singleVerse = await this.getSingleVerse.get(
+          {
+            book,
+            chapter,
+            verse,
+          },
+          { sorting: query.sorting },
+        );
+      } else {
+        singleVerse = await this.getSingleVerse.get({
+          book,
+          chapter,
+          verse,
+        });
+      }
 
       return ok(singleVerse);
     } catch (error) {
