@@ -4,7 +4,7 @@ import { Reference } from '@/api/words/models/reference';
 import { Word } from '@/api/words/models/word';
 import { IController } from '@/common/protocols/controller';
 import { MissingParamError, ServerError } from '@/common/errors';
-import { badRequest, ok, serverError } from '@/common/helpers/http';
+import { badRequest, notFound, ok, serverError } from '@/common/helpers/http';
 
 const word: Word = {
   definition: 'definition',
@@ -161,5 +161,20 @@ describe(`Get single verse controller`, () => {
     });
 
     expect(response).toEqual(serverError(new ServerError('any')));
+  });
+
+  it(`should return 404 if usecase return null`, async () => {
+    const { sut, getSingleVerseStub } = makeSut();
+    jest.spyOn(getSingleVerseStub, 'get').mockResolvedValueOnce(null);
+
+    const response = await sut.handle({
+      params: {
+        book: 'genesis',
+        chapter: 1,
+        verse: 1,
+      },
+    });
+
+    expect(response).toEqual(notFound());
   });
 });
