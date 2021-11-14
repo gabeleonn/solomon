@@ -52,7 +52,7 @@ describe(`Get single verse controller`, () => {
     const { sut } = makeSut();
 
     const response = await sut.handle({
-      data: {
+      params: {
         book: undefined,
         chapter: 1,
         verse: 1,
@@ -66,7 +66,7 @@ describe(`Get single verse controller`, () => {
     const { sut } = makeSut();
 
     const response = await sut.handle({
-      data: {
+      params: {
         book: 'genesis',
         chapter: undefined,
         verse: 1,
@@ -80,7 +80,7 @@ describe(`Get single verse controller`, () => {
     const { sut } = makeSut();
 
     const response = await sut.handle({
-      data: {
+      params: {
         book: 'genesis',
         chapter: 1,
         verse: undefined,
@@ -90,12 +90,12 @@ describe(`Get single verse controller`, () => {
     expect(response).toEqual(badRequest(new MissingParamError('verse')));
   });
 
-  it(`should call usecase with proper data`, async () => {
+  it(`should call usecase with proper data (without params)`, async () => {
     const { sut, getSingleVerseStub } = makeSut();
     const spy = jest.spyOn(getSingleVerseStub, 'get');
 
     await sut.handle({
-      data: {
+      params: {
         book: 'genesis',
         chapter: 1,
         verse: 1,
@@ -109,11 +109,36 @@ describe(`Get single verse controller`, () => {
     });
   });
 
+  it(`should call usecase with proper data (with params)`, async () => {
+    const { sut, getSingleVerseStub } = makeSut();
+    const spy = jest.spyOn(getSingleVerseStub, 'get');
+
+    await sut.handle({
+      params: {
+        book: 'genesis',
+        chapter: 1,
+        verse: 1,
+      },
+      query: {
+        sorting: 'bsb',
+      },
+    });
+
+    expect(spy).toBeCalledWith(
+      {
+        book: 'genesis',
+        chapter: 1,
+        verse: 1,
+      },
+      { sorting: 'bsb' },
+    );
+  });
+
   it(`should return right response`, async () => {
     const { sut } = makeSut();
 
     const response = await sut.handle({
-      data: {
+      params: {
         book: 'genesis',
         chapter: 1,
         verse: 1,
@@ -128,7 +153,7 @@ describe(`Get single verse controller`, () => {
     jest.spyOn(getSingleVerseStub, 'get').mockRejectedValueOnce(new Error());
 
     const response = await sut.handle({
-      data: {
+      params: {
         book: 'genesis',
         chapter: 1,
         verse: 1,
