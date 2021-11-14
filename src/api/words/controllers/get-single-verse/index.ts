@@ -6,7 +6,7 @@ import {
   IResponse,
 } from '@/common/protocols/controller';
 import { MissingParamError, ServerError } from '@/common/errors';
-import { badRequest, ok, serverError } from '@/common/helpers/http';
+import { badRequest, notFound, ok, serverError } from '@/common/helpers/http';
 import { Word } from '@/api/words/models/word';
 
 export class GetSingleVerseController implements IController {
@@ -42,6 +42,10 @@ export class GetSingleVerseController implements IController {
           chapter,
           verse,
         });
+      }
+
+      if (!singleVerse) {
+        return notFound();
       }
 
       return ok(singleVerse);

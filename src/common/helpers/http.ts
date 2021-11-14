@@ -6,6 +6,11 @@ export const badRequest = (error: Error): IResponse => ({
   message: error.message,
 });
 
+export const notFound = (): IResponse => ({
+  status: 404,
+  message: 'Recurso não encontrado',
+});
+
 export const serverError = (error: Error): IResponse => ({
   status: 500,
   data: new ServerError(error.stack),
