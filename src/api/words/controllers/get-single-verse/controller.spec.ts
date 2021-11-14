@@ -1,4 +1,4 @@
-import { GetSingleVerseController } from './controller';
+import { GetSingleVerseController } from '.';
 import { IGetSingleVerse } from '@/api/words/usecases/get-single-verse/interface';
 import { Reference } from '@/api/words/models/reference';
 import { Word } from '@/api/words/models/word';
