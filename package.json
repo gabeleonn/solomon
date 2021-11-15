@@ -13,14 +13,18 @@
     "lint:staged": "eslint --fix"
   },
   "dependencies": {
-    "mongodb": "^4.1.4"
+    "bluebird": "^3.7.2",
+    "mongodb": "^4.1.4",
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "@shelf/jest-mongodb": "^2.1.0",
+    "@types/bluebird": "^3.5.36",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
+    "@types/redis": "^2.8.32",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "eslint": "^8.2.0",
